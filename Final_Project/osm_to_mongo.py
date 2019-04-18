@@ -4,20 +4,28 @@
 
 import json
 import cchardet as chardet
-
+from pprint import pprint
+from tqdm import tnrange, tqdm_notebook
+from time import sleep
 from bs4 import BeautifulSoup
 
 
+def tqdm_ipython_test():
+    for i in tnrange(3, desc='1st loop'):
+        for j in tqdm_notebook(range(100), desc='2nd loop'):
+            sleep(0.01)
+
+
 def read_osm_file(filename):
-    with open(filename, "rb") as f:
+    with open(filename, "r", encoding='UTF-8') as f:
         msg = f.read()
-        result = chardet.detect(msg)
+        # result = chardet.detect(msg)
     return msg
 
 
 def get_soup(file, tags):
-    soup = BeautifulSoup(file, 'xml')
-    return [{tag: soup.find_all(tag)} for tag in tags]
+    soup = BeautifulSoup(file, 'xml', from_encoding='UTF-8')
+    return [{tag: soup.find_all(tag)} for tag in tqdm_notebook(tags)]
 
 
 def get_dict_data(result_set_item):
@@ -104,7 +112,7 @@ with open(r'C:\Users\Riley\PycharmProjects\DataWrangling\rochester_osm.json', 'r
 
 data = json.loads(json_osm)
 # %%
-#connect to the database/collection we'll be storing the osm data in
+# connect to the database/collection we'll be storing the osm data in
 db = get_db("udacity")
 col = db.rochester_osm
 for dl in osm_dicts:
@@ -116,7 +124,7 @@ json_file = "rochester_osm.json"
 
 json_to_mongo(json_file=json_file, col=col)
 # %%
-#setup connection for data exploration and cleaning
+# setup connection for data exploration and cleaning
 
 from pymongo import MongoClient
 
@@ -125,6 +133,8 @@ db = client["udacity"]
 osm_col = db["rochester_osm"]
 
 # %%
+
+# Run a query to get a list of unique keys for the osm Data we uploaded
 from pprint import pprint
 
 pipeline = [
@@ -153,19 +163,22 @@ unique_osm_keys = list(osm_col.aggregate(pipeline=pipeline))
 pprint(list(osm_col.aggregate(pipeline=pipeline)))
 
 # %%
+
+# Get a list of fields that begin with address
 address_fields = [x for x in unique_osm_keys[0]['allkeys'] if str(x).startswith('addr')]
 pprint(sorted(address_fields))
 
 # %%
-
+# find all address codes in collection
 return_field = {'_id': False,
                 'addr:postcode': True}
 
-addres_code_list = list(osm_col.find({'addr:postcode': {'$exists': True}}, {'addr:postcode': 1, '_id': 0}))
-pprint(addres_code_list)
+address_code_list = list(osm_col.find({'addr:postcode': {'$exists': True}}, {'addr:postcode': 1, '_id': 0}))
+pprint(address_code_list)
 
 # %%
-unique_zip_codes = set([x['addr:postcode'] for x in addres_code_list])
+# get unique zip codes
+unique_zip_codes = set([x['addr:postcode'] for x in address_code_list])
 pprint(unique_zip_codes)
 
 # %%
@@ -173,11 +186,12 @@ pprint(unique_zip_codes)
 testersss = list(osm_col.find({'addr:postcode': "1445033"}, {'_id': 0}))
 
 # %%
+# fix the outlier record with googled zipcode
 testersss = list(osm_col.find({'addr:postcode': "West Main Street"}))
 
 myquery = {'id': "1609006999"}
-newvalues = [{"$set": {"addr:postcode": "14614"}},
-             {"$set": {"addr:street": "West Main Street"}}]
+newvalues = [{"$set": {"addr:postcode": "14614"}},  # zip code from googling address
+             {"$set": {"addr:street": "West Main Street"}}]  # upserting street address
 
 for value in newvalues:
     update_s = osm_col.update_one(myquery, value)
@@ -185,13 +199,14 @@ for value in newvalues:
     pprint(update_s.upserted_id)
 
 # %%
-
+# Validate update worked
 pprint(list(osm_col.find({'id': '1609006999'})))
 # %%
+# get a list of zip codes that aren't the standard 5 digit format
 zips_to_fix = [x for x in unique_zip_codes if len(x) > 5 and str(x)[0:5].isdigit()]
 
 # %%
-
+# loop to fix the malformed zipcodes
 for value in zips_to_fix:
     myquery = {"addr:postcode": value}
     value = {"$set": {"addr:postcode": str(value[0:5])}}
@@ -202,5 +217,9 @@ for value in zips_to_fix:
     pprint(update_s.matched_count)
 
 # %%
+#
 updated_address_code_list = list(osm_col.find({'addr:postcode': {'$exists': True}}, {'addr:postcode': 1, '_id': 0}))
 set([x['addr:postcode'] for x in updated_address_code_list])
+
+# %%
+tqdm_ipython_test()
