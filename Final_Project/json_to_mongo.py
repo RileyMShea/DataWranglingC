@@ -2,10 +2,18 @@ import json
 from pymongo.results import InsertManyResult
 from pymongo.database import Database
 from typing import List
+from pymongo import ASCENDING, DESCENDING
 from pymongo.collection import Collection
 from io import TextIOWrapper
 from timeit import timeit
+from pprint import pprint
 
+
+
+def add_index(col: Collection):
+    col.create_index([('id', ASCENDING),
+                      ('type', DESCENDING)], unique=True, name='id_type_unique_index')
+    return col.list_indexes()
 
 def json_to_mongo(json_file: str, col: Collection) -> List[InsertManyResult]:
     # makes a fresh collection from a json file
@@ -26,9 +34,10 @@ def get_db(db_name: str) -> Database:
 def main():
     json_file = "rochester_osm.json"
     db = get_db("udacity")  # type: Database
-    col = db.test_col  # type: Collection
+    col = db.rochester_osm  # type: Collection
     result = json_to_mongo(json_file=json_file, col=col)
     total = sum(len(x.inserted_ids) for x in result)
     print(f"{total} records inserted from {json_file}")
+    pprint(list(add_index(col=col)))
 if __name__ == "__main__":
-    print(timeit(main, number=1))
+    print(f"Completed in {timeit(main, number=1)} seconds")
