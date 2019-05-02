@@ -1,12 +1,13 @@
 import json
-from pymongo.results import InsertManyResult
-from pymongo.database import Database
+from io import TextIOWrapper
+from pprint import pprint
+from timeit import timeit
 from typing import List
+
 from pymongo import ASCENDING, DESCENDING
 from pymongo.collection import Collection
-from io import TextIOWrapper
-from timeit import timeit
-from pprint import pprint
+from pymongo.database import Database
+from pymongo.results import InsertManyResult
 
 
 def add_index(col: Collection):
@@ -49,10 +50,10 @@ def get_user_counts(col: Collection):
            single_doc_user.append(entry['user'])
 
 
-def main():
-    json_file = "rochester_osm.json"
+def main(json_file="rochester_osm.json"):
+    # json_file = "rochester_osm.json"
     db = get_db("udacity")  # type: Database
-    col = db.rochester_osm  # type: Collection
+    col = db[json_file.split('.')[0]]  # type: Collection
     result = json_to_mongo(json_file=json_file, col=col)
     total = sum(len(x.inserted_ids) for x in result)
     print(f"{total} records inserted from {json_file}")
