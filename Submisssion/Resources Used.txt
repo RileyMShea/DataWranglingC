@@ -1,4 +1,5 @@
 Web Sites:
+https://gist.github.com/carlward/54ec1c91b62a5f911c42#file-sample_project-md
 https://nbviewer.jupyter.org/github/justmarkham/pandas-videos/blob/master/pandas.ipynb
 https://pandas.pydata.org/pandas-docs/stable/index.html
 https://www.crummy.com/software/BeautifulSoup/bs4/doc/
