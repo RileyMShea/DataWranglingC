@@ -9,8 +9,11 @@ Submission
 `README.md`
 > Current file: describing other files in submission
 
-`final_submission.ipynb`
+`final_submission.ipynb` `final_submission.pdf`
 > Jupyter Notebook(Lab) file containing answers to rubric questions
+
+`create_and_clean.py`
+> Primary file to run if not using the jupyter notebooks
 
 `test_scientific_export.ipynb`
 > Jupyter Notebook containing most code necessary to fulfill project requirements
