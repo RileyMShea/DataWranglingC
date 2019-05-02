@@ -30,7 +30,7 @@ def process_map(filename):
 
 
 def main():
-    users = process_map('rochester_ny.osm')
+    users = process_map('rochester_sample.osm')
     pprint.pprint(users)
 
 

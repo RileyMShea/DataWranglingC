@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import xml.etree.ElementTree as ET
-import pprint
+from pprint import pprint
 import re
 import codecs
 import json
@@ -95,26 +95,26 @@ CREATED = ["version", "changeset", "timestamp", "user", "uid"]
 
 
 def shape_element(element):
-    return None
-    node = {}
+    # return None
+    z = pprint(element.attrib)
+    node = dict()
     if element.tag == "node" or element.tag == "way":
-        node["id"] = element.attrib["id"]
-        node["type"] = element.tag
-        node["visible"] = True
-        node["created"]["version"] = element.attrib["id"]
-        node["created"]["changeset"] = element.attrib["changeset"]
-        node["created"]["timestamp"] = element.attrib["timestamp"]
-        node["created"]["user"] = element.attrib["user"]
-        node["created"]["uid"] = element.attrib["uid"]
-        node["pos"] = [element.attrib["lat"], element.attrib["lon"]]
-        node["address"]["housenumber"] = element.attrib["id"]
-        node["id"] = element.attrib["id"]
-        node["id"] = element.attrib["id"]
-        node["id"] = element.attrib["id"]
-        node["id"] = element.attrib["id"]
+        try:
+            node["id"] = element.attrib["id"]
+            node["type"] = element.tag
+            node["visible"] = True
+            node["created"] = {"version": element.attrib["id"]}
+            node["created"]["changeset"] = element.attrib["changeset"]
+            node["created"]["timestamp"] = element.attrib["timestamp"]
+            node["created"]["user"] = element.attrib["user"]
+            node["created"]["uid"] = element.attrib["uid"]
+            node["pos"] = [element.attrib["lat"], element.attrib["lon"]]
+            # node["address"]["housenumber"] = element.attrib["id"]
+        except KeyError as e:
+            # Ignoring cases where some key doesn't exist
+            pass
 
-
-        # Way <class 'list'>: ['id', 'version', 'timestamp', 'changeset', 'uid', 'user']
+            # Way <class 'list'>: ['id', 'version', 'timestamp', 'changeset', 'uid', 'user']
         # Node <class 'list'>: ['id', 'lat', 'lon', 'version', 'timestamp', 'changeset', 'uid', 'user']
         # <class 'dict'>: {'id': '15089724', 'version': '19', 'timestamp': '2018-06-03T21:49:34Z', 'changeset': '59518459',
         #                 'uid': '734072', 'user': 'Roadsguy'}
@@ -127,7 +127,8 @@ def shape_element(element):
 
 def process_map(file_in, pretty=False):
     # You do not need to change this file
-    file_out = "{0}.json".format(file_in)
+    # file_out = "{0}.json".format(file_in)
+    file_out = "{0}.json".format(file_in + "_test")
     data = []
     with codecs.open(file_out, "w") as fo:
         for _, element in ET.iterparse(file_in):
@@ -145,8 +146,8 @@ def main():
     # NOTE: if you are running this code on your computer, with a larger dataset,
     # call the process_map procedure with pretty=False. The pretty=True option adds
     # additional spaces to the output, making it significantly larger.
-    data = process_map('rochester_ny.osm', True)
-    pprint.pprint(data)
+    data = process_map('rochester_sample.osm', True)
+    pprint(data)
 
     # correct_first_elem = {
     #     "id": "261114295",

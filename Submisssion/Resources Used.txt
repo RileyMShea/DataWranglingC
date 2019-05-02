@@ -1,0 +1,11 @@
+Web Sites:
+https://nbviewer.jupyter.org/github/justmarkham/pandas-videos/blob/master/pandas.ipynb
+https://pandas.pydata.org/pandas-docs/stable/index.html
+https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+https://stackoverflow.com/questions/38585204/pycharm-to-toggle-soft-wrap-in-code-editor
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+https://api.mongodb.com/python/current/
+https://docs.mongodb.com/manual/
+https://jupyter-notebook.readthedocs.io/en/stable/
+https://jupyterlab.readthedocs.io/en/stable/
+https://stackoverflow.com/

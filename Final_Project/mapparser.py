@@ -38,7 +38,7 @@ def main():
             print('Loaded parsed data from file, skipping iterparse')
     except Exception as e:
         print(f"{e}\nPeforming iterative parse")
-        tags = count_tags(osm_file='rochester_ny.osm')
+        tags = count_tags(osm_file='rochester_sample.osm')
         with open("tag_data.pickle", 'wb', ) as f:
             pickle.dump(tags, f, pickle.HIGHEST_PROTOCOL)
 

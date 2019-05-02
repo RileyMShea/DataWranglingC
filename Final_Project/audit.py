@@ -35,7 +35,7 @@ def key_type(element, keys):
 
     if element.tag == "tag":
         tag_key = element.attrib['k']
-        #tag_value = element.attrib['v']
+        # tag_value = element.attrib['v']
         if re.search(lower, tag_key):
             keys['lower'] += 1
         elif re.search(lower_colon, tag_key):
@@ -56,9 +56,8 @@ def process_map(filename):
 
 
 def main():
-    keys = process_map('rochester_ny.osm')
+    keys = process_map('rochester_sample.osm')
     pprint.pprint(keys)
-
 
 
 if __name__ == "__main__":

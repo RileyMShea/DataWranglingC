@@ -10,6 +10,7 @@ from pprint import pprint
 
 
 def add_index(col: Collection):
+    """creating index on id and type to avoid collisions of id"""
     col.create_index([('id', ASCENDING),
                       ('type', DESCENDING)], unique=True, name='id_type_unique_index')
     return col.list_indexes()

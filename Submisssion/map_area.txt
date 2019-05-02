@@ -1,0 +1,6 @@
+Link to the map position you wrangled in your project:
+https://www.openstreetmap.org/export#map=11/43.1724/-77.5621
+A short description of the area:
+-This is the area around Rochester, NY located in upstate New York by lake Ontario.
+Reason for your choice:
+-I choose Rochester, NY because it was the city the I grew up in.
