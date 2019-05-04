@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>Auto Generated Documentation &#8212; DataWrangling 1.0 documentation</title>
+    <link href="_static/alabaster.css" rel="stylesheet" type="text/css"/>
+    <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"
+            type="text/javascript"></script>
+    <script src="_static/jquery.js" type="text/javascript"></script>
+    <script src="_static/underscore.js" type="text/javascript"></script>
+    <script src="_static/doctools.js" type="text/javascript"></script>
+    <script src="_static/language_data.js" type="text/javascript"></script>
+    <link href="genindex.html" rel="index" title="Index"/>
+    <link href="search.html" rel="search" title="Search"/>
+    <link href="index.html" rel="prev" title="Welcome to DataWrangling’s documentation!"/>
+
+    <link href="_static/custom.css" rel="stylesheet" type="text/css"/>
+
+
+    <meta content="width=device-width, initial-scale=0.9, maximum-scale=0.9" name="viewport"/>
+
+</head>
+<body>
+
+
+<div class="document">
+    <div class="documentwrapper">
+        <div class="bodywrapper">
+
+
+            <div class="body" role="main">
+
+                <div class="section" id="module-create_and_clean">
+                    <span id="auto-generated-documentation"></span>
+                    <h1>Auto Generated Documentation<a class="headerlink" href="#module-create_and_clean"
+                                                       title="Permalink to this headline">¶</a></h1>
+                    <dl class="function">
+                        <dt id="create_and_clean.get_col">
+                            <code class="descclassname">create_and_clean.</code><code
+                                class="descname">get_col</code><span
+                                class="sig-paren">(</span><em>db_name='udacity'</em>,
+                            <em>collection='rochester_osm'</em><span class="sig-paren">)</span><a
+                                class="reference internal" href="_modules/create_and_clean.html#get_col"><span
+                                class="viewcode-link">[source]</span></a><a class="headerlink"
+                                                                            href="#create_and_clean.get_col"
+                                                                            title="Permalink to this definition">¶</a>
+                        </dt>
+                        <dd><p>create and return a mongodb db/collection connection object</p>
+                        </dd>
+                    </dl>
+
+                    <dl class="function">
+                        <dt id="create_and_clean.get_dict_data">
+                            <code class="descclassname">create_and_clean.</code><code
+                                class="descname">get_dict_data</code><span
+                                class="sig-paren">(</span><em>result_set_item</em><span class="sig-paren">)</span><a
+                                class="reference internal" href="_modules/create_and_clean.html#get_dict_data"><span
+                                class="viewcode-link">[source]</span></a><a class="headerlink"
+                                                                            href="#create_and_clean.get_dict_data"
+                                                                            title="Permalink to this definition">¶</a>
+                        </dt>
+                        <dd><p>generate dictionaries from the resultsets</p>
+                        </dd>
+                    </dl>
+
+                    <dl class="function">
+                        <dt id="create_and_clean.get_soup">
+                            <code class="descclassname">create_and_clean.</code><code
+                                class="descname">get_soup</code><span class="sig-paren">(</span><em>file</em>,
+                            <em>tags</em><span class="sig-paren">)</span><a class="reference internal"
+                                                                            href="_modules/create_and_clean.html#get_soup"><span
+                                class="viewcode-link">[source]</span></a><a class="headerlink"
+                                                                            href="#create_and_clean.get_soup"
+                                                                            title="Permalink to this definition">¶</a>
+                        </dt>
+                        <dd><p>generate some resultsets for the tags from the xml</p>
+                        </dd>
+                    </dl>
+
+                    <dl class="function">
+                        <dt id="create_and_clean.get_suffix_mapping">
+                            <code class="descclassname">create_and_clean.</code><code class="descname">get_suffix_mapping</code><span
+                                class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal"
+                                                                                             href="_modules/create_and_clean.html#get_suffix_mapping"><span
+                                class="viewcode-link">[source]</span></a><a class="headerlink"
+                                                                            href="#create_and_clean.get_suffix_mapping"
+                                                                            title="Permalink to this definition">¶</a>
+                        </dt>
+                        <dd><p>get a mapping for street suffixes by scraping table from USPS</p>
+                        </dd>
+                    </dl>
+
+                    <dl class="function">
+                        <dt id="create_and_clean.json_to_mongo">
+                            <code class="descclassname">create_and_clean.</code><code
+                                class="descname">json_to_mongo</code><span class="sig-paren">(</span><em>col:
+                            pymongo.collection.Collection</em>, <em>json_file: str = 'rochester_osm.json'</em><span
+                                class="sig-paren">)</span><a class="reference internal"
+                                                             href="_modules/create_and_clean.html#json_to_mongo"><span
+                                class="viewcode-link">[source]</span></a><a class="headerlink"
+                                                                            href="#create_and_clean.json_to_mongo"
+                                                                            title="Permalink to this definition">¶</a>
+                        </dt>
+                        <dd><p>create new mongodb collection from json file</p>
+                        </dd>
+                    </dl>
+
+                    <dl class="function">
+                        <dt id="create_and_clean.main">
+                            <code class="descclassname">create_and_clean.</code><code class="descname">main</code><span
+                                class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal"
+                                                                                             href="_modules/create_and_clean.html#main"><span
+                                class="viewcode-link">[source]</span></a><a class="headerlink"
+                                                                            href="#create_and_clean.main"
+                                                                            title="Permalink to this definition">¶</a>
+                        </dt>
+                        <dd><p>currently set to use sample extract, for full implementation see jupyter notebook version
+                            of this file</p>
+                        </dd>
+                    </dl>
+
+                    <dl class="function">
+                        <dt id="create_and_clean.read_osm_file">
+                            <code class="descclassname">create_and_clean.</code><code
+                                class="descname">read_osm_file</code><span class="sig-paren">(</span><em>filename:
+                            str</em><span class="sig-paren">)</span><a class="reference internal"
+                                                                       href="_modules/create_and_clean.html#read_osm_file"><span
+                                class="viewcode-link">[source]</span></a><a class="headerlink"
+                                                                            href="#create_and_clean.read_osm_file"
+                                                                            title="Permalink to this definition">¶</a>
+                        </dt>
+                        <dd><p>reads in osm file to be processed</p>
+                        </dd>
+                    </dl>
+
+                    <dl class="function">
+                        <dt id="create_and_clean.tqdm_ipython_test">
+                            <code class="descclassname">create_and_clean.</code><code
+                                class="descname">tqdm_ipython_test</code><span class="sig-paren">(</span><span
+                                class="sig-paren">)</span><a class="reference internal"
+                                                             href="_modules/create_and_clean.html#tqdm_ipython_test"><span
+                                class="viewcode-link">[source]</span></a><a class="headerlink"
+                                                                            href="#create_and_clean.tqdm_ipython_test"
+                                                                            title="Permalink to this definition">¶</a>
+                        </dt>
+                        <dd><p>testing tdqm works in jupyter lab</p>
+                        </dd>
+                    </dl>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+        <div class="sphinxsidebarwrapper">
+            <h1 class="logo"><a href="index.html">DataWrangling</a></h1>
+
+
+            <h3>Navigation</h3>
+            <ul class="current">
+                <li class="toctree-l1 current"><a class="current reference internal" href="#">Auto Generated
+                    Documentation</a></li>
+            </ul>
+
+            <div class="relations">
+                <h3>Related Topics</h3>
+                <ul>
+                    <li><a href="index.html">Documentation overview</a>
+                        <ul>
+                            <li>Previous: <a href="index.html" title="previous chapter">Welcome to DataWrangling’s
+                                documentation!</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div id="searchbox" role="search" style="display: none">
+                <h3>Quick search</h3>
+                <div class="searchformwrapper">
+                    <form action="search.html" class="search" method="get">
+                        <input name="q" type="text"/>
+                        <input type="submit" value="Go"/>
+                    </form>
+                </div>
+            </div>
+            <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+        </div>
+    </div>
+    <div class="clearer"></div>
+</div>
+<div class="footer">
+    &copy;2019, Riley Shea.
+
+    |
+    Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+    &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+
+    |
+    <a href="_sources/code.rst.txt"
+       rel="nofollow">Page source</a>
+</div>
+
+
+</body>
+</html>
